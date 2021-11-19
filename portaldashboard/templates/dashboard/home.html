@@ -1,0 +1,151 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+
+<section class="container text-center" >
+  
+{% if user.is_authenticated %}
+  <h1 style="font-family:serif;"><b>Welcome {{user}}  </b></h1>
+{% endif %}
+<h4 style="font-family:serif; color:black; ">They know enough who know how to learn.– Henry Adams &#128522</h4>
+
+
+  <hr> 
+    <br>
+  <div class="row" >
+    <div class="col-md-3 ">
+      <a href="{% url 'books' %}" >
+        <div class="card mt-20" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/bookn.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title "><u><b>
+              Books</b></u>
+            </h5>
+            Want to refer to a book? Search it over here.
+          </div>
+        </div>
+      </a>
+  </div>
+
+    <div class="col-md-3">
+      <a href="{% url 'youtube' %}">
+        <div class="card" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/youtuben.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+            <b><u>
+              Youtube
+              </b></u>
+            </h5>
+            Search various youtube tutorials for your desired topic and get your ideas more clear.
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="col-md-3">
+      <a href="{% url 'wiki' %}">
+        <div class="card" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/wikipedian.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+            <b><u>
+              WikiPedia
+              </b></u>
+            </h5>
+            Search WikiPedia for any information related to your desired topic.
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+    <div class="col-md-3">
+      <a href="{% url 'dictionary' %}">
+        <div class="card" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/dictionaryn.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              <b><u>
+              Dictionary
+              </u></b>
+            </h5>
+            A vocabulary from a book is troubling you? No problem, enter the word, and the meaning will be displayed
+            almost instantaneously.
+          </div>
+        </div>
+      </a>
+    </div>
+    </div>
+  
+  <div class="row">
+    <div class="col-md-3">
+      <a href="{% url 'notes' %}">
+        <div class="card" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/notesn.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+            <b><u>
+              Notes
+            </u></b>
+            </h5>
+            Create your own notes and read them later whenever you want. You may also delete the notes afterwards if you want.
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a href="{% url 'homework' %}">
+        <div class="card" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/homeworkn.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+            <b><u>
+              Homework
+              </b></u>
+            </h5>
+            Add homeworks and assign them deadlines. They will be displayed prioritised by deadlines
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a href="{% url 'todo' %}">
+        <div class="card" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/todon.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+            <b><u>
+              To Do
+              </b></u>
+            </h5>
+            Add your to-do lists for your day and do them one by one.
+          </div>
+        </div>
+      </a>
+    </div>
+    
+
+    <div class="col-md-3">
+      <a href="{% url 'quiz' %}">
+        <div class="card" style="background-color:rgba(255, 99, 71, 0);">
+          <img class="card-img-top" src="{% static 'images/quizn.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+            <b><u>
+              Quiz
+              </b></u>
+            </h5>
+            Give Multiple tests topicwise and make your learning better.
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+</section>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+<section class='text-center container'>
+
+    <div class="container">
+
+        <div class="content-section p-0 mt-5">
+            {% for note in notes %}
+            <div class="m-3" style="font-family:serif; color:black;" >
+                <h2>{{note.title}}</h2>
+            </div>
+
+            <hr class="p-0 m-0">
+            <p class="description m-5 p-5">
+                {{note.description}}
+            </p>
+            <hr>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}

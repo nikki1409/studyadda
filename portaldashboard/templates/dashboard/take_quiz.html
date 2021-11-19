@@ -1,0 +1,81 @@
+{% extends 'dashboard/base.html' %} {% load static %}
+{% block content %}
+{% load static %}
+
+<div id="app" class="mt-5 pt-5">
+    <div class="container">
+        
+        
+        <div> <p><b> SAMPLE QUIZ</b></p></div>
+        <div v-for="(question,index) in questions" :key="question.id" class="mt-5">
+            <p>[[index+1]]. [[question.question]]</p>
+            <div v-for="(option,i) in question.options">
+                <input :id="'radio-'+question.id" @change="check(index,i,question.id)" type="radio" :value="option" :name="'option-'+question.id">
+                [[option]]
+            </div>
+            <p :id="'show_message-'+question.id"></p>
+        
+        </div>
+
+        
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    var app=new Vue({
+        delimiters:['[[',']]'],
+        el:'#app',
+        data:{
+            course_id:'{{id}}',
+            questions:[],
+            message:'hello',
+            
+
+        },
+        methods:{
+            greet:function(name){
+                console.log('hello from'+name)
+            },
+            check(question_index,option_index,id){
+                var question=this.questions[question_index]
+                var element=document.getElementById(`show_message-${id}`)
+
+                
+                var radios=document.querySelectorAll(`#radio-${id}`)
+                for(var i=0;i<radios.length;i++){
+                    radios[i].disabled = true
+                }
+
+                
+
+                if((option_index+1).toString()==question.answer){
+                    element.classList="text-success mt-3"
+                    element.innerHTML="Right Answer &#128512;"
+                    
+
+                }
+                else{
+                    element.classList="text-danger mt-3"
+                    element.innerHTML=`Wrong Answer &#128533 <br> Answer: ${question.desc}` 
+                    
+                }
+            },
+            
+        },
+
+
+        mounted(){
+            console.log(this.course_id)
+            fetch(`/api/${this.course_id}`)
+            .then(res=>res.json())
+            .then(result=>{
+                console.log(result)
+                this.questions=result
+            })
+        }
+
+    });
+</script>
+
+{% endblock content %}
