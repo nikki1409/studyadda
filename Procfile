@@ -1,1 +1,1 @@
-web: gunicorn studyportal.wsgi
+web: gunicorn studyportal.wsgi --log-file -

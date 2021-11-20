@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,13 +134,17 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+#  STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
 
+
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 LOGIN_REDIRECT_URL='home'
 LOGIN_URL='login'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
